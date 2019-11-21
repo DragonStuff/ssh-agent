@@ -17,7 +17,7 @@ try {
     core.exportVariable('SSH_AUTH_SOCK', authSock);
 
     console.log("Adding private key to agent");
-    child_process.execSync('ssh-add -', { input: core.getInput('ssh-private-key') });
+    child_process.execSync('ssh-add - <<<"', { input: core.getInput('ssh-private-key') }, '"');
 } catch (error) {
     core.setFailed(error.message);
 }
